@@ -1,0 +1,12 @@
+{
+	"/": {
+	    "firewalld_zone": "public",
+	    "firewalld_service": "ssh",
+	    "otp_key": "xxxxxxxxxxxxxxxxxxxx"
+	},
+	"/site1": {
+	    "firewalld_zone": "public",
+	    "firewalld_service": "ssh",
+	    "otp_key": "xxxxxxxxxxxxxxxxxxxx"
+	}
+}
