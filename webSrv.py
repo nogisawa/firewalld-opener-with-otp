@@ -35,6 +35,7 @@ If FLASK_ENV is set to 'development', the log level is raised to DEBUG.
 FLASK_ENV is configured in the webSrv.ini file.
 """
 FLASK_ENV = os.getenv('FLASK_ENV', 'production')
+print(FLASK_ENV)
 if FLASK_ENV == 'development':
     app.logger.setLevel(logging.DEBUG)
     log_handler.setLevel(logging.DEBUG)
@@ -108,7 +109,7 @@ def receivePost(client_ip, settings):
         # Wait for 1 sec to mitigate bture-force attacks.
         time.sleep(1)
         success = True
-        app.logger.info("Accept: "+str(client_ip))
+        app.logger.info(f"Accept: client_ip={client_ip} service={settings['service']}")
 
         if not run_accept_ip_one_time(client_ip, settings):         
             # Increase errWaitTime if an expected error occures,
@@ -121,7 +122,7 @@ def receivePost(client_ip, settings):
         app.logger.debug("totp verify failed")
         #  Wait for this duration before displaying the error message, if an error occures.
         time.sleep(3)
-        app.logger.info("Failed: "+str(client_ip))
+        app.logger.info("Failed: client_ip={client_ip} service={settings['service']}")
         error = "Authentication failed! Please try again."
 
     # Display HTML.
